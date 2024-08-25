@@ -65,23 +65,20 @@ def load_train_data(image_directory="./changed_train"):
 
 X_train, X_test, Y_train, Y_test = load_train_data()
 
+# create the model
 input_shape = (IMG_SIZE, IMG_SIZE, 1)
 model = keras.Sequential()
-
 model.add(Conv2D(filters=128, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.20))
-
 model.add(Conv2D(filters=64, kernel_size=(3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.30))
-
 model.add(Conv2D(filters=32, kernel_size=(3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.1))
 
 model.add(Flatten())
-
 model.add(Dense(32, activation='relu'))
 model.add(Dense(2, activation='sigmoid'))
 model.compile(
